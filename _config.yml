@@ -1,0 +1,16 @@
+# Site settings
+title: Robert Bayer
+email: robertwbayer@gmail.com
+description: >
+  Personal website, blog, and internet presence of Robert Bayer: tech geek, designer, bibliophile, programmer, maker, entrepreneur, audiophile, and computer engineer.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://rwbayer.com" # the base hostname & protocol for your site
+twitter_username: rwbayer
+github_username:  rwbayer
+
+paginate: 10
+
+# Build settings
+markdown: rdiscount
+permalink: pretty
+highlighter: pygments

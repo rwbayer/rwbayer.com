@@ -1,0 +1,23 @@
+---
+layout: page
+title: Projects
+permalink: /projects/
+---
+
+
+<div class="data">
+
+  
+    {% for post in site.categories.projects %}
+	    <div class="item">
+	    	<a class="post" href="{{ post.url | prepend: site.baseurl }}"></a>
+	    	<h1 class="post-title">
+	         {{ post.title }}
+	        </h1>
+	        <p class="post-meta accent index">{{ post.date | date: "%b %-d, %Y" }}</p>    
+	        <p class="excerpt">{{ post.excerpt | remove: '<p>' | remove:'</p>'}} </p>   
+	    </div>
+    {% endfor %}
+
+
+</div>
