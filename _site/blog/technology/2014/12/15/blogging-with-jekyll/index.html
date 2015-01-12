@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Blogging with Jekyll</title>
+  <meta name="description" content="Create a Jekyll blog using Amazon S3 for deployment and Amazon Route53.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Quicksand|La+Belle+Aurore|Josefin+Slab:300|Open+Sans|Oswald' rel='stylesheet' type='text/css'>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+
+  <body>
+
+    <header class="siteHeader">
+
+ 
+
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed white" data-toggle="collapse" data-target="#collapse1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand brand" href="http://rwbayer.com/">R. W. Bayer</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="collapse1">
+        <ul class="nav navbar-nav navbar-right links">
+          <li><a href="/about/">About Me</a></li>
+          <li><a href="/technology/">Technology</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/quotes/">Quotes</a></li>
+          <li><a href="/music/">Music</a></li>
+          <li><a href="/books/">Books</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+
+
+</header>
+
+
+    <div class="container">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Blogging with Jekyll</h1>
+    <p class="post-meta accent">Dec 15, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>Here's how I set up this blog using Jekyll, Pygments, Amazon S3, Bootstrap, s3_website, Disqus for comments, and git for version control.</p>
+
+<p>I'm running Mac OS X Yosemite now and these instructions are written for Yosemite, but when I started I hadn't updated. Updating your operating system will probably force you to reinstall <a href="https://developer.apple.com/downloads/index.action">XCode Command-Line Tools,</a> and you might have to redo some of the steps, like installing the necessary gems, so it's best if you update your operating system before getting started.</p>
+
+<p>Some of the commands in the tutorial below may require administrator access to run. If you are told that you don't have the right permissions or access to perform any of these steps type 'sudo' before the command and enter your password when prompted by Terminal.</p>
+
+<h2>General Set Up</h2>
+
+<ol>
+<li><p>Install <a href="https://www.ruby-lang.org/en/">Ruby.</a>
+If you already have XCode 6 installed with <a href="https://developer.apple.com/downloads/index.action">Command-Line Tools,</a> then you already have ruby installed. You can check this by typing in Terminal:</p>
+
+<pre><code>    $ ruby -v
+</code></pre>
+
+<p>This will return the version of ruby you have installed.</p></li>
+<li><p>Install <a href="https://rubygems.org">ruby-gems.</a><br/>
+Again, you can check and see if you already have gems installed by typing in terminal (from now on anything typed in terminal will be distinguished by a $):</p>
+
+<pre><code>    $ gem -v 
+</code></pre>
+
+<p>or</p>
+
+<pre><code>    $ gem --version
+</code></pre>
+
+<p>Both of these commands will return the version number of gems you have installed or tell you that it doesn’t recognize the command if gems is not already installed.</p>
+
+<p>If you need to install gems, go <a href="https://rubygems.org/pages/download">here.</a></p></li>
+<li><p>Install <a href="http://nodejs.org">node.js</a><br/>
+Node.js needs to be installed to support CoffeeScript. You can go to <a href="http://nodejs.org">nodejs.org</a> to install it by clicking the install button, opening the package, and following the directions it gives.</p></li>
+<li><p>Install <a href="http://jekyllrb.com">Jekyll</a><br/>
+Now that we have all the prerequisites out of the way, we’re ready to install Jekyll. Because of the previous steps, this is as easy as running:</p>
+
+<pre><code>    $ gem install Jekyll
+</code></pre></li>
+</ol>
+
+
+<h2>Syntax Highlighting with Pygments</h2>
+
+<p>Now is a good time to install <a href="http://pygments.org">Pygments,</a> which we can use for syntax highlighting in our blog posts. If you don’t want to enable syntax highlighting, you can <a href="#back">skip</a> the next three steps.</p>
+
+<ol>
+<li><p>Install <a href="https://www.python.org">python</a><br/>
+Again, you probably already have python installed since you’re the type of person setting up a Jekyll blog, so you can check to make sure and see the version you have on your computer by running</p>
+
+<pre><code>    $ python –V 
+</code></pre>
+
+<p>or</p>
+
+<pre><code>    $ python –version
+</code></pre></li>
+<li><p><a href="https://pip.pypa.io/en/latest/">pip</a><br/>
+Next, we want to install pip, which is the easiest way to install and manage Python packages.<br/>
+Securely download <a href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a>, and then run:</p>
+
+<pre><code>    $ python get-pip.py
+</code></pre></li>
+<li><p><a href="http://pygments.org">Pygments</a><br/>
+Now that we have pip installed, installing pygments is as easy as:</p>
+
+<pre><code>    $ pip install Pygments
+</code></pre></li>
+</ol>
+
+
+<h2 id="back">Back to Jekyll</h2>
+
+
+<ol>
+<li><p>In Terminal, navigate to the directory (folder) you want to house your blog by using the cd command.</p></li>
+<li><p>Create a new Jekyll boilerplate-site in the current directory using:</p>
+
+<pre><code>    $ jekyll new . 
+</code></pre></li>
+<li><p>Run</p>
+
+<pre><code>    $ jekyll serve 
+</code></pre>
+
+<p>and visit <a href="http://localhost:4000">http://localhost:4000</a> in your browser to see the boilerplate site.</p></li>
+<li><p>You should also be familiar with:</p>
+
+<pre><code>    $ jekyll build 
+</code></pre>
+
+<p>which recompiles your Jekyll site, but doesn’t serve it to the local host like the serve command.</p></li>
+</ol>
+
+
+<p><strong>Your Jekyll site is up and running.</strong></p>
+
+<h2>Template Styling</h2>
+
+<p>One of the things that makes Jekyll so cool is it’s templating features, which uses the <a href="http://liquidmarkup.org">Liquid</a> templating engine so that each of your posts and pages can easily maintain a consistent style. I used <a href="http://getbootstrap.com">bootstrap</a> so that my blog is responsive and looks good on everything from phones to desktop computers. I chose not to use <a href="http://sass-lang.com">sass.</a></p>
+
+<ol>
+<li><p>Download <a href="http://getbootstrap.com">bootstrap.</a></p></li>
+<li><p>Place the bootstrap.min.css file in the css folder of your Jekyll blog.</p></li>
+<li><p>Add a link to your bootstrap css in your head.html in the _includes folder of your Jekyll Blog.</p>
+
+<pre><code>    &lt;link rel="stylesheet" href="/css/bootstrap.min.css"&gt;
+</code></pre></li>
+</ol>
+
+
+<h2>Hosting</h2>
+
+<p>There’s plenty of choices when it comes to hosting a Jekyll site. A popular choice is using <a href="https://pages.github.com">GitHub Pages</a> because Jekyll actually powers GitHub Pages and GitHub Pages can host Jekyll-powered sites for free. I chose to use <a href="http://aws.amazon.com/s3/">Amazon S3</a> instead. Amazon S3 is a “simple storage service” made for asset storage in a secure and scalable environment. Amazon also offers the ability to host static websites through their S3 service. For this part of the guide, I'll be using my domain, rwbayer.com as an example. If you're following along as you create your own site, be sure to take careful note of where I include www. and where it is left off as this is an important distinction.</p>
+
+<ol>
+<li><p>Sign in to your AWS console or create an AWS account <a href="http://aws.amazon.com">here.</a></p></li>
+<li><p>Go to the S3 console under Storage &amp; Content Delivery.</p></li>
+<li><p>Create a bucket with your domain as the bucket name.</p>
+
+<pre><code>    rwbayer.com
+</code></pre></li>
+<li><p>Upload the index.html file for your website and the 404 page to this bucket.</p></li>
+<li><p><strong>Record the Endpoint URL for this bucket. You can see this URL in the screenshot below.</strong></p></li>
+</ol>
+
+
+<p><a href="/assets/images/s3_bucket.png"><img class="postImage" src="/assets/images/s3_bucket.png"></a></p>
+
+<h3>Adding A Bucket Policy</h3>
+
+<ol>
+<li><p>Go to the bucket's properties and click on the "Permissions" option.</p></li>
+<li><p>Click on "Add a Bucket Policy" and add the following policy, adding in your bucket's name.</p></li>
+</ol>
+
+
+<script src="https://gist.github.com/rwbayer/33fd9bab38a3bf4bea06.js"></script>
+
+
+<p><a href="/assets/images/s3_bucket_policy.png"><img class="postImage" src="/assets/images/s3_bucket_policy.png"></a></p>
+
+<h3>Bucket Properties</h3>
+
+<ol>
+<li><p>Go to the bucket's properties and click on the "Static Website Hosting" option.</p></li>
+<li><p>Check the "Enable website hosting" option, make sure the index and 404 page have the correct name in the text boxes, and save.</p></li>
+<li><p>Create another bucket with www.domain.com as the name.</p>
+
+<pre><code>    www.rwbayer.com
+</code></pre></li>
+<li><p>Go to this bucket's properties, and click the "Redirect all requests to another host name" option.</p></li>
+<li><p>Enter domain.com in the text box</p>
+
+<pre><code>    "Redirect all requests to:" rwbayer.com
+</code></pre></li>
+</ol>
+
+
+<p><a href="/assets/images/s3_bucket2.png"><img class="postImage" src="/assets/images/s3_bucket2.png"></a></p>
+
+<h2>Route 53</h2>
+
+<ol>
+<li><p>Login to your AWS account.</p></li>
+<li><p>Go to the Route 53 console.</p></li>
+<li><p>Click on "Create Hosted Zone," name the zone your domain.com (for example, I named the Hosted Zone for this site "rwbayer.com"), and click "Create."</p></li>
+<li><p>Inside the Hosted Zone, create a Record Set for your domain.</p>
+
+<p>Do not enter anything in the "Name" input field, so that the name of this Record Set is just "domain.com."</p>
+
+<p>For "Type" select "A - IPv4 address."</p>
+
+<p>Under "Alias" select "Yes."</p>
+
+<p>For the "Alias Target" enter the URL we recorded earlier.</p>
+
+<p>Leave the "Routing Policy" as "Simple."</p>
+
+<p><a href="/assets/images/Route53_domain.png"><img class="postImage" src="/assets/images/Route53_domain.png"></a></p></li>
+<li><p>Create another Record Set named "www.domain.com"</p>
+
+<p>So, enter "www." in the Name input field, so that the name of this Record Set is "www.domain.com."</p>
+
+<p>Like above, select "A- IPv4 address" for "Type," "Yes" for "Alias," and "Simple" for "Routing Policy."</p>
+
+<p>Then, under "Alias Target," select the domain.com. option from the dropdown menu.</p>
+
+<p><a href="/assets/images/Route53_wwwdomain.png"><img class="postImage" src="/assets/images/Route53_wwwdomain.png"></a></p></li>
+<li><p>Make sure you saved both Record Sets. Go "Back to Hosted Zones" and click your zone once so that you can record your Name Servers (four URLS) to point your domain to Route 53.</p>
+
+<p><a href="/assets/images/Route53_HostedZone.png"><img class="postImage" src="/assets/images/Route53_HostedZone.png"></a></p></li>
+</ol>
+
+
+<p><strong>Changes in Route 53 and to your DNS provider may take up to 48 hours to propagate, refer to your provider's documentation for further information and help.</strong></p>
+
+<h2>S3_website</h2>
+
+<p><a href="https://github.com/laurilehmijoki/s3_website">s3_website</a> is an awesome open source project that makes it easy to push your Jekyll blog to an Amazon S3 bucket from Terminal. It's very useful because otherwise you'd have to basically remember all the files you edit, go to your S3 console, delete the old file and upload the new file each time you make a change. s3_website handles all that nastiness for us!</p>
+
+<ol>
+<li><p>Open <a href="https://console.aws.amazon.com/iam/">AWS IAM console</a></p></li>
+<li><p>Create a new user that has full access to S3 and CloudFront resources.<br/>
+<strong>Make sure to record your Access Key ID and your Secret Access Key because you will need them in the next steps.</strong></p></li>
+<li><p>Install s3_website by running:</p>
+
+<pre><code>    $ gem install s3_website
+</code></pre></li>
+<li><p>In Terminal, navigate to your blog/website's root directory and run:</p>
+
+<pre><code>    $ s3_website cfg create
+</code></pre></li>
+<li><p>Open the <code>s3_website.yml</code> file that was generated in your website's root directory, place your AWS credentials and your bucket name in the designated places at the top of the file, and save.</p></li>
+<li><p>Run</p>
+
+<pre><code>    $ s3_website cfg apply
+</code></pre></li>
+<li><p>Now, you can use:</p>
+
+<pre><code>    $ s3_website push
+</code></pre>
+
+<p>to push your site to your S3 bucket. This is the command you will use most often, so it's a good one to remember.</p></li>
+</ol>
+
+
+<h2>Disqus</h2>
+
+<p>Disqus is a pretty standard choice for comments on blogs. Since it is so easy to install on almost any blogging platform, I chose to use it for this site.</p>
+
+<ol>
+<li><p>Sign up on disqus.com<br/>
+Go to <a href="https://disqus.com/admin/signup/">https://disqus.com/admin/signup/</a> Either create an account or sign in to your current Disqus account.</p></li>
+<li><p>Next, go to <a href="https://disqus.com/admin/create/">https://disqus.com/admin/create/</a> and create a profile for your blog to register the site.</p></li>
+<li><p>Now, copy your <a href="http://docs.disqus.com/developers/universal/">Universal Embed Code</a>.</p></li>
+<li><p>In the template where you want your comments to appear, paste your embed code inside a Liquid if statement, as shown here:</p>
+
+<pre><code>    % if page.comments %
+    [UNIVERSAL EMBED CODE FROM DISQUS HERE]
+    % endif %
+</code></pre>
+
+<p>I chose to add this only to my <code>post.html</code> template in my <code>_layouts</code> folder.</p></li>
+<li><p>Now, any page or template where you want there to be comments, set the <code>comments</code> attribute to <code>true</code> in the YAML Front Matter. For example, I wanted there to be comments on all of my blog posts, so in my <code>post.html</code> in my <code>_layouts</code> directory, my Front Matter looks like:</p>
+
+<pre><code>    ---
+    layout: default
+    comments: true
+    ---
+</code></pre></li>
+</ol>
+
+
+<h2>Git</h2>
+
+<p>If you'd like to add your blog's code to GitHub, you can do so by following these steps. One important thing to remember is that if you are using s3_website to push your site to your S3 bucket, then there is sensitive information stored in your <code>s3_website.yml</code> file. So, we will create a <code>.gitignore</code> file to make sure this file isn't posted to GitHub.</p>
+
+<ol>
+<li><p>From your <a href="https://github.com">GitHub</a> account, click on <code>Repositories</code> and then click the <code>New</code> button to create a new repository. Name the repository and add a description if you'd like, but don't initialize the repo with a <code>README</code> or add a <code>.gitignore</code> file. We can add both of these later. Also, be sure to copy the remote repository URL, which we will need in a later step.</p></li>
+<li><p>Now, in Terminal, navigate to your blog's root directory and run:</p>
+
+<pre><code>    $ git init
+</code></pre></li>
+<li><p>Before we add the files, we want to create our <code>.gitignore</code> file to be sure our <code>s3_website.yml</code> file is not included in the GitHub repo.<br/>
+First, create a <code>.gitignore</code> file by running:</p>
+
+<pre><code>    $ touch .gitignore
+</code></pre>
+
+<p>Next, we need to add the file's name to the <code>.gitignore</code> using a text editor. I use vi, so I would run:</p>
+
+<pre><code>    $ vi .gitignore
+</code></pre>
+
+<p>And then, once inside the ignore file, type the name of the file you want to ignore (use <code>i</code> to put vi into insert mode, <code>esc</code> to exit insert mode, and <code>:wq</code> to save the file and quit vi)</p>
+
+<pre><code>    s3_website.yml
+</code></pre></li>
+<li><p>Since we now have our <code>.gitignore</code> file in place, we add all our files to our local repository to stage them for the first commit:</p>
+
+<pre><code>    $ git add .
+</code></pre></li>
+<li><p>Then, commit the files you've staged:</p>
+
+<pre><code>    $ git commit -m "Initial commit"
+</code></pre></li>
+<li><p>Using the URL for the remote repository we created in step 1, run:</p>
+
+<pre><code>    $ git remote add origin [REMOTE REPOSITORY URL HERE]
+    $ git push origin master
+</code></pre>
+
+<p>This adds the remote URL and pushes your site we staged in our local repository to the repository on GitHub. Check the repo you made in Step 1 to make sure you can now see your blog's files online.</p></li>
+</ol>
+
+
+<h2>Sitemap</h2>
+
+<p>To generate a <code>sitemap.xml</code> file to help with your SEO, use <a href="https://github.com/kinnetica/jekyll-plugins">this plugin,</a> and follow the instructions in the README. Note that when editing your <code>_config.yml</code> file that the tabs used in the example may not work in Jekyll, but that by removing the tabs, your configuration will be used.</p>
+
+<h2>robots.txt</h2>
+
+<p>To create a <code>robots.txt</code> file to also help with your SEO, simply create a text file in your root directory named <code>robots.txt</code> and insert the following in the file, replacing the domain with your own:</p>
+
+<pre><code>    User-agent: *
+    Allow: /
+    Sitemap: http://rwbayer.com/sitemap.xml
+</code></pre>
+
+<h2>Questions?</h2>
+
+<p>If you have any questions, feel free to ask in the comments!</p>
+
+<p>Also, check out the <a href="https://github.com/rwbayer/rwbayer.com">GitHub Repo for this blog.</a></p>
+
+<p>Thanks for sticking around.</p>
+
+
+    
+	    <div class="disqusContainer">
+		  <div id="disqus_thread"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'rwbayer-comments'; // required: replace example with your forum shortname
+
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		</div>
+  	
+  </article>
+
+
+</div>
+
+    </div>
+
+    <footer class="footer">
+  <div class="container">
+    <div class="footerContent">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-3">
+          <a class="social" href="https://github.com/rwbayer">
+            <p id="socialIcon">&#62208;</p>
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a class="social" href="https://instagram.com/rwbayer/">
+            <p id="socialIcon">&#62253;</p>
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a class="social" href="https://linkedin.com/in/rwbayer">
+            <p id="socialIcon">&#62232;</p>
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a class="social" href="https://twitter.com/rwbayer">
+            <p id="socialIcon">&#62229;</p>
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4">
+        <p class="rights">Robert Bayer <script type="text/javascript">document.write(new Date().getFullYear());</script>. All Rights Reserved.</p>
+      </div>
+      
+    </div>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script src="/js/bootstrap.min.js"></script>
+
+  <script src="/js/grid-a-licious.min.js"></script>
+  <script src="/js/main.js"></script>
+
+
+</footer>
+
+
+  </body>
+
+</html>

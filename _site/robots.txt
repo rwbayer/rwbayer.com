@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://rwbayer.com/sitemap.xml

@@ -1,0 +1,55 @@
+---
+layout: post
+title:  "IMMIXR"
+date:   2015-1-10 03:57:30
+categories: blog technology projects
+excerpt: An open-source social media aggregation tool. A "working progress."
+---
+
+**NOTE: As mentioned below, the IMMIXR site feed is not currently up as we are rebuilding the site using different technologies. Read below for the full story & some screenshots from when it was up and running. **
+
+[IMMIXR](http://immixr.me) is a social media aggregation tool that I created with Gus Boling at [CalHacks 2014,](http://www.calhacks.io) which was UC Berkeley's hackathon last Fall.  
+
+The idea behind IMMIXR is simple: all of your social streams should be able to live in one simple, unified interface. 
+
+<a href="{{ "/assets/images/immixr1.png" | prepend: site.baseurl }}"><img class="postImage" src="{{ "/assets/images/immixr1.png" | prepend: site.baseurl }}"></a>
+
+This project stemmed from the desire to put all my feeds from Twitter, Instagram, Facebook, etc. on my personal website. I'm not a fan of the widgets that are available and, as I began to look for an open-source alternative, I quickly noticed that there was an obvious need for a free alternative.
+
+While there are many services that provide the opposite interaction (allowing the user to see all of his friends' feeds from different social media sites in one view), there aren't many that aggregate your own social presence for display on a personal site. In fact, I only found one service that does what I wanted it to in a clean, user-friendly way, and it was a subscription service.
+
+As we set out to develop IMMIXR, Gus and I na&#239;vely decided that we wanted to do everything on the front-end using JavaScript API's for several reasons: 
+
+- Very easy installation, making it more appealing to less technically-savvy individuals. 
+- No server required (cheaper)
+- We ~~are~~ *were* much more familiar with front-end technologies
+
+After we had implemented Instagram's and Facebook's APIs, we realized the problems with this decision. To increase their APIs' safety, almost all of the popular social media sites had restrictions on the front-end implementation of user's data. For instance, Facebook wouldn't allow us to persist an Access Token for more than a few hours (at best) unless we used a server-side implementation and Twitter no longer offers a front-end method of receiving a user's tweets. 
+
+Now, I'm not saying that more security is a bad thing. In fact, I understand Twitter's integration of OAUTH for all user queries to make sure that users' privacy is protected. At the same time, it seems silly to put this requirement on public accounts as well as private. You could argue that without the OAUTH requirement that "hackers" could harvest the social data from the public accounts, but isn't that the definition of making my account public in the first place? If I cared, I would make it private. 
+
+<a href="{{ "/assets/images/immixr2.png" | prepend: site.baseurl }}"><img class="postImage" src="{{ "/assets/images/immixr2.png" | prepend: site.baseurl }}"></a>
+
+Anyways, we decided to keep going with a front-end implementation to use as a conceptual demo, and to rework the implementation after the hackathon to be more robust. We experiemented with using an unofficial javascript API for Twitter, but in the end decided it would be better to wait and just use the official API.
+
+In the end, we integrated Instagram, Facebook, and Rotten Tomatoes (to compete for an Intel Mashery API prize) APIs into a beautifully simple interface that removed the disjointed look that is common in embedded social sites, but still allowed for subtle ques as to what site generated the post.  
+
+We used [grid-a-licious](http://suprb.com/apps/gridalicious/) and [bootstrap](http://getbootstrap.com) to create a completely responsive, "pinter-esque" layout, and [FancyBox](http://fancybox.net) to to give a little more information when you click on a single post. 
+We also developed watermarks for each site so that when the user hovers over a post they can quickly see the logo of the site that generated it. 
+
+We're currently in the process of rebuilding IMMIXR using server-side authentication and experimenting with using a database to minimize API calls, while thinking ahead to how we can make IMMIXR easy for anyone to install on their site. 
+
+Check back here for updates coming soon!
+
+We are grateful to the CalHacks organizers, sponsors (especially [Intel Mashery](http://www.mashery.com)), and the other participants for a wonderful weekend of hacking, and we're excited for the future of IMMIXR.
+
+##LINKS:  
+
+- [ChallengePost](http://challengepost.com/software/immixr-yogzq)
+- [GitHub](https://github.com/rwbayer/immixr)
+- [IMMIXR](http://www.immixr.me)
+
+<a href="{{ "/assets/images/immixr.png" | prepend: site.baseurl }}"><img class="postImage" src="{{ "/assets/images/immixr.png" | prepend: site.baseurl }}"></a>
+
+
+

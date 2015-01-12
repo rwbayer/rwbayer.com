@@ -75,7 +75,7 @@ div.navbar-header {
 
 h1.post-title{
 	font-family: 'Oswald', sans-serif;
-	font-size: 4.0rem;
+	font-size: 3.5rem;
 	text-transform: uppercase;
 	text-align: center;
 }
@@ -95,6 +95,12 @@ article.post-content {
 	margin-right: auto;
 	margin-bottom: 3em;
 }
+
+/*For about page */
+article.post-content.about {
+	margin-top: 1rem;
+}
+
 article.quote-content {
 	font-family: 'Open Sans', sans-serif;
 	text-align: center;
@@ -170,6 +176,12 @@ a.post {
 	left: 0;
 }
 
+img.postImage{
+	max-width: 100%;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
 p.post-meta.accent.index {
 	font-family: 'Josefin Slab', serif;
 	font-size: 1.4rem;
@@ -185,7 +197,10 @@ p.excerpt {
 	max-width: 450px;
 }
 
-h1.post-title.page {
+h1.page-title {
+	font-family: 'Oswald', sans-serif;
+	font-size: 3.5rem;
+	text-transform: uppercase;
 	margin-bottom: 40px;
 	text-align: left;
 	margin-left: 10px;
@@ -202,9 +217,9 @@ p#socialIcon {
 }
 
 div.tooltip {
-	margin-top: 25px;
+	top: -10px;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 2.0rem;
+	font-size: 1.5rem;
 }
 
 a:hover p#socialIcon, a:focus p#socialIcon, a.social:hover, a.social:focus {
@@ -225,17 +240,34 @@ p.rights {
 		text-align: center;
 		margin-top: 0;
 	}
+	.centerMobiletoRight {
+		text-align: center;
+	}
+	.centerMobiletoLeft {
+		text-align: center;
+	}
+}
+@media(min-width: 768px){
+	.centerMobiletoRight {
+		text-align: right;
+	}
+	.centerMobiletoLeft {
+		text-align: left;
+	}
 }
 
-p.about#socialIcon {
+p.about.socialIcon {
 	font-family: 'Entypo';
 	font-size: 70px;
 	color: #333333;
 	max-height: 55px;
 	margin-bottom: 0;
+	display: inline;
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
-a:hover p.about#socialIcon, a:focus p.about#socialIcon, a.about.social:hover, a.about.social:focus {
+a:hover p.about.socialIcon, a:focus p.aboutsocialIcon, a.about.social:hover, a.about.social:focus {
 	text-decoration: none;
 	color: #666666;
 }

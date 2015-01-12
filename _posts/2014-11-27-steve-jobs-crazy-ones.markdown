@@ -2,7 +2,7 @@
 layout: quote
 title:  Steve Jobs
 date:   2014-11-27 10:16:56
-categories: blog technology quotes
+categories: blog quotes
 excerpt: Here's to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently...
 ---
 

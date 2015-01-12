@@ -14,3 +14,14 @@ paginate: 10
 markdown: rdiscount
 permalink: pretty
 highlighter: pygments
+sitemap:
+file: "/sitemap.xml"
+exclude:
+- "s3_website.yml"
+include_posts:
+- "index.html"
+- "books.html"
+- "music.html"
+- "projects.html"
+- "quotes.html"
+- "technology.html"

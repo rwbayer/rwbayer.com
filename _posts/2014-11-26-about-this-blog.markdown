@@ -3,7 +3,7 @@ layout: post
 title:  "About this Blog"
 date:   2014-11-26 03:47:56
 categories: blog technology projects
-excerpt: The "Why?" and "How?" of the creation of this site, including a discussion on how I chose Jekyll as my platform and explanations of some of my design choices.
+excerpt: The creation of this site, including choosing a blogging platform and design.
 ---
 
 I’ve always been intrigued and inspired by technology. Over the past few years, I've often considered creating my own blog to serve as a way for me to update the world on what I’m into at the moment, a record of past projects, and a way for me to talk about the things that interest me when my friends are bored of listening.  
