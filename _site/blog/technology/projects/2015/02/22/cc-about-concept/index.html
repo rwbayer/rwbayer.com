@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>Rails on Yosemite</title>
-  <meta name="description" content="How to install ruby and Rails on Mac OS X Yosemite.">
+  <title>About Page Redesign</title>
+  <meta name="description" content="A redesign of the About page for Santa Clara University's Career Center.">
 
   <link rel="stylesheet" href="/css/main.css">
   
@@ -60,49 +60,47 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Rails on Yosemite</h1>
-    <p class="post-meta accent">Dec 20, 2014</p>
+    <h1 class="post-title">About Page Redesign</h1>
+    <p class="post-meta accent">Feb 22, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>I recently started a web programming class from <a href="http://universityofreddit.com">University of Reddit</a> called <a href="http://universityofreddit.com/class/40250/web-programming-with-ruby-on-rails">“Web Programming with Ruby on Rails.”</a> The <a href="http://www.schneems.com/ut-rails/">course</a> is taught by University of Texas professor, <a href="http://www.schneems.com">Richard Schneeman.</a> My first homework assignment was to get used to command line basics, which I feel like I have a pretty good handle on,  and to install ruby and Rails on my computer. Here’s how I installed ruby and rails on Mac OS X Yosemite 10.10.1.</p>
+    <p><a href="http://cms.scu.edu/careercenter/about/cc-test.cfm">Here's</a> a link to the SCU Career Center's About Page Concept discussed below.</p>
 
-<h2>Install XCode Command-Line Tools</h2>
+<p>I recently had the opportunity to work on a redesign of the about page for Santa Clara University's Career Center.</p>
 
-<p>You will need to install <a href="https://developer.apple.com/downloads/index.action">XCode Command-Line Tools</a> if you haven’t already. I already had these installed from when I downloaded <a href="https://developer.apple.com/xcode/downloads/">XCode 6</a> and told it to install them when prompted.</p>
+<p><a href="/assets/images/cc_1.png"><img class="postImage" src="/assets/images/cc_1.png"></a></p>
 
-<h2>Install RVM</h2>
+<p>The Career Center was looking for a new single-page story that led students, parents, faculty/staff, employers, alumni, and other stakeholders through four distinct pillars of the Career Center's mission and allowed the user to find useful information in each section.</p>
 
-<p>Next, you need to install <a href="https://www.ruby-lang.org/en/">ruby.</a> Now we already have ruby installed because we installed the Command-Line Tools, but we still need a <a href="https://rvm.io">ruby version manager.</a></p>
+<p>It was critical that the user could clearly understand the Career Center's mission, goals, and resources from viewing the page, but we also wanted the user to understand the <strong>why</strong> behind the Career Center and how its mission differs from other schools' through the emphasis on Jesuit values.</p>
 
-<p>Why do we need a version manager if we just installed the latest version of ruby? If you are maintaining older Rails applications, you might need to install Ruby 1.9.3. And, in the future, you will need to install newer Ruby versions as they are released. There are so many different versions of ruby and many of your applications will use different ones. RVM makes managing the different versions simple.</p>
+<p><a href="/assets/images/cc_2.png"><img class="postImage" src="/assets/images/cc_2.png"></a></p>
 
-<p>To install RVM, open Terminal and run:</p>
+<p>The concept of a website being a story is a useful marketing technique and has been made easier by advancements in web technologies.</p>
 
-<pre><code>    $ \curl -sSL https://get.rvm.io | bash -s stable
-    $ source $HOME/.rvm/scripts/rvm  
-    $ rvm -v  
-</code></pre>
+<p>I used the four icons created to represent the Career Center's mission as a floating navigation bar. The bar appears after you scroll to the second section and stays with you after that point. I used the opacity of the icon to show which section the user is currently viewing.</p>
 
-<p>To start using RVM you need to run <code>source /Users/bobbybayer/.rvm/scripts/rvm</code> in all your open shell windows, and you may need to reopen all shell windows.</p>
+<p>The connections between the four sections and the "thread" that connects each point creates a connected and immersive experience for users.</p>
 
-<p>After installing RVM, you can install different versions of ruby using:</p>
+<p><a href="/assets/images/cc_3.png"><img class="postImage" src="/assets/images/cc_3.png"></a></p>
 
-<pre><code>    $ rvm install VERSION_NUMBER_HERE
-</code></pre>
+<p>The main challenges I faced in this project were:</p>
 
-<p>You should also be familiar with the <code>rvm use</code> command which can be used to change the version of ruby that you use. You can use commands like <code>rvm use 2.1.5</code> to select a specific version of ruby or <code>rvm use system</code> to use your system's version of ruby.</p>
+<ul>
+<li>Creating a page that fit within the University's overarching design guidelines, while also portraying a modern vibe</li>
+<li>Incorporating new technologies and web practices into a buggy and outdated CMS</li>
+<li><p>Choosing which technologies and libraries to use</p>
 
-<h2>Install rails</h2>
+<p>I originally thought the page would be parallax, but later took out the parallax functionality and went with an implementation that only used <a href="https://github.com/imakewebthings/waypoints">waypoints.</a></p></li>
+</ul>
 
-<p>To install rails, open Terminal and run:</p>
 
-<pre><code>    $ gem install rails
-</code></pre>
+<p><a href="/assets/images/cc_4.png"><img class="postImage" src="/assets/images/cc_4.png"></a></p>
 
-<p>You can use the <code>rails -v</code> command to check and see what version of rails you have installed and to double as a check to make sure the install succeeded.</p>
+<p>While the Career Center has chosen not to move forward with this vision considering the <a href="http://www.scu.edu/webpublishing/2014redesign/">impending redesign of the entire SCU website,</a> I appreciate the opportunity to take on such a challenging project and attempt to convey the Career Center's spirit. I'm looking forward to assisting the Career Center in its future web projects!</p>
 
-<p>I also installed <a href="http://brew.sh">homebrew</a>, which is not necessary, but makes installing packages much easier.</p>
+<p><a href="http://cms.scu.edu/careercenter/about/cc-test.cfm">Another Link to the Page</a></p>
 
 
     

@@ -21,7 +21,7 @@ permalink: /about/
 	</a>
         
 	<a class="about social" href="https://twitter.com/rwbayer" data-toggle="tooltip" data-placement="bottom" title="Twitter">
-		<p class="about socialIcon">&#62229;</p>
+		<p class="about socialIcon">&#62217;</p>
 	</a>
 
 	<a class="about social" href="https://facebook.com/bobby.bayer1" data-toggle="tooltip" data-placement="bottom" title="Facebook">
