@@ -6,19 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>Resume</title>
-  <meta name="description" content="Robert Bayer's personal website: programmer, inventor, entrepreneur, and computer engineer.
-">
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+
   
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Quicksand|La+Belle+Aurore|Josefin+Slab:300|Open+Sans|Oswald' rel='stylesheet' type='text/css'>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-</head>
 
+	<link rel="stylesheet" href="../css/style.css"> <!-- Resource style -->
+	<script src="{{ "/js/modernizr.js" | prepend: site.baseurl }}"></script> <!-- Modernizr -->
+  <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
+</head>
 
   <body>
 
@@ -56,15 +60,8 @@
 
 </header>
 
-
     <div class="container">
-        <h1 class="page-title centerMobiletoLeft ">Resume</h1>
-
-<embed src ="http://rwbayer.com/assets/Bayer_Robert_Resume.pdf" width=1000px height=1100px>
-  
-
-
-
+        {{ content }}
     </div>
 
     <footer class="footer">
@@ -101,15 +98,16 @@
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-  <script src="/js/bootstrap.min.js"></script>
+  <script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
 
-  <script src="/js/grid-a-licious.min.js"></script>
-  <script src="/js/main.js"></script>
-
+  <script src="{{ "/js/grid-a-licious.min.js" | prepend: site.baseurl }}"></script>
+  <script src="{{ "/js/main.js" | prepend: site.baseurl }}"></script>
+	
+	<script src="{{ "/js/main_timeline.js" | prepend: site.baseurl }}"></script> <!-- Resource jQuery -->
 
 </footer>
 
-
+    
   </body>
 
 </html>
