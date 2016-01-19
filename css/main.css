@@ -51,13 +51,13 @@ ul.nav.navbar-nav.navbar-right.links li a:hover {
 nav.navbar.navbar-default.navbar-static-top{
 	background-color: #333333;
 	color: #FFFFFF;
-	height: 100px;
+	height: 7.39vmax;
 }
 div.navbar-header {
 	margin-top: 30px;
 }
 
-/* mobile-only nav button */
+/*mobile-only nav butto*/ 
 .navbar-default .navbar-toggle.white {
 	border: 2px solid #FFFFFF;
 }
@@ -74,7 +74,7 @@ div.navbar-header {
 	background-color: #333333;
 }
 
-/* mobile-only nav dropdown */
+/*mobile-only nav dropdown */
 .navbar-collapse.collapse.in {
 	background-color: #333333;
 }
@@ -91,16 +91,16 @@ h1.post-title{
 	text-align: center;
 }
 h1.timeline-title {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 3.5rem;
-	text-transform: uppercase;
 	text-align: left;
+	font-weight: 700;
 }
 h1.blurb-title {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 3.5rem;
-	text-transform: uppercase;
 	text-align: center;
+	font-weight: 700;
 }
 section#resume {
 	text-align: center;
@@ -121,6 +121,7 @@ article.post-content {
 	margin-right: auto;
 	margin-bottom: 3em;
 }
+*/
 
 /*For about page */
 article.post-content.about {
@@ -147,6 +148,7 @@ a.button {
 a.button:hover {
 	background-color: #000000 !important;
 	color: #95C9CC !important;
+	text-decoration: none;
 }
 
 article.quote-content {
@@ -166,14 +168,13 @@ html {
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px !important;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
+  /*Set the fixed height of the footer here */
   height: 55px;
   background-color: #333333;
 }
@@ -187,16 +188,16 @@ div.footerContent p {
 	font-size: 1.4rem;
 }
 
-/* basic link styling */
+/*basic link styling */
 a {
-	color: #1D62F0 !important;
+	color: #1D62F0;
 }
 a:hover, a:focus {
-	text-decoration: none !important; 
-	color: #0C2760 !important;
+	text-decoration: none; 
+	color: #0C2760;
 }
 
-/* Index Styles */
+/*Index Styles */
 .item {
 	background: #333333;
 	color: #FFFFFF;
@@ -240,9 +241,9 @@ p.post-meta.accent.index {
 }
 
 span.timeline-date {
-	font-family: 'Josefin Slab', serif;
+	font-family: 'Open Sans', sansserif;
 	font-size: 1.4rem !important;
-	color: #333333;
+	color: #B0B0B0;
 	font-weight: bold;
 	opacity: 1 !important;
 }
@@ -367,4 +368,48 @@ a:hover p.about.socialIcon, a:focus p.aboutsocialIcon, a.about.social:hover, a.a
 
 div.disqusContainer {
 	margin-top: 8rem;
+}
+
+button.header {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 3vmax;
+	margin: 0 0 10px;
+	display: inline;
+	background: transparent;
+	color: #000000;
+	border: none;
+	margin-top: 1vmax;
+	width: 45%;
+
+	transition: all 0.5s ease 0s;
+}
+
+button.header a {
+	text-decoration: none;
+	color: #FFFFFF;
+
+}
+
+button.header:hover, button.header:focus {
+	color: #B0B0B0;
+}
+button.header:hover a, button.header:focus a {
+	color: #B0B0B0;
+}
+
+p.header {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 3vmax;
+	margin: 0 0 10px;
+	display: inline;
+	color: #FFFFFF;
+	margin-top: 1vmax;
+}
+
+div.header {
+	width: 100%;
+	height: 100%;
+	text-align: center;
 }

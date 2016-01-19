@@ -1,28 +1,38 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width initial-scale=1">
 
-<div class="data">
+	  	<title>Robert Bayer</title>
+	  	<meta name="description" content="insert description here">
 
-  
-    {% for post in site.posts %}
-    	{% if post.categories contains 'quotes' %}
-    		<div class="item">
-		    	<a class="post" href="{{ post.url | prepend: site.baseurl }}"></a>   
-		        <p class="excerpt">"{{ post.excerpt | remove: '<p>' | remove:'</p>'}}" - {{post.title}}</p>   
-		    </div>
-    	{% else %}
-		    <div class="item">
-		    	<a class="post" href="{{ post.url | prepend: site.baseurl }}"></a>
-		    	<h1 class="post-title">
-		          {{ post.title }}
-		        </h1>
-		        <p class="post-meta accent index">{{ post.date | date: "%b %-d, %Y" }}</p>    
-		        <p class="excerpt">{{ post.excerpt | remove: '<p>' | remove:'</p>'}} </p>   
-		    </div>
-    	{% endif %}
-    {% endfor %}
+	  	<link rel="stylesheet" href="css/index.css">
+	  	<link rel="stylesheet" href="css/immixr.css">
+
+	  	<!-- Import Google Fonts -->
+	  	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+	</head>
 
 
-</div>
+	<body>
 
+		<div id="immixr"></div>
+  		<div id="info">
+			<h1>Hi, I'm Robert Bayer.</h1>
+		    <button><a href="/about/">about me</a></button>
+		    <p>|</p> 
+		    <button><a href="https://medium.com/robert-bayers-projects">projects</a></button>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins and IMMIXR) -->
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- IMMIXR's JS -->
+		<script src="js/immixr.js"></script>
+		<!-- this site's JS -->
+ 		<script src="js/main.js"></script>
+  	</body>
+
+</html>
